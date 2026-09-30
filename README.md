@@ -15,11 +15,10 @@ The database is built locally at `data/meta.duckdb` from the Meta CSV files. The
    ```
    py -3.14 -m venv .venv
    .venv\Scripts\activate
-   pip install duckdb==1.5.5 pandas
+   pip install -r requirements.txt
    ```
-2. Download the data from the [Social Connectedness Index page](https://ai.meta.com/ai-for-good/datasets/social-connectedness-index/) and put these files in a `data` folder in the project:
+2. Download the data from the [Social Connectedness Index page](https://ai.meta.com/ai-for-good/datasets/social-connectedness-index/) and put this file in a `data` folder in the project:
    - `data/gadm1.csv`: the GADM level-1 file
-   - `data/nuts1_2024.csv`: from the NUTS 2024 zip
 3. Build the database:
    ```
    python load_data.py --local
@@ -31,9 +30,8 @@ The database is built locally at `data/meta.duckdb` from the Meta CSV files. The
 import duckdb
 
 con = duckdb.connect("data/meta.duckdb")
-df = con.sql("SELECT * FROM sci_gadm1 LIMIT 10").df()
+con.sql("SELECT * FROM sci_gadm1 LIMIT 10").show()
 ```
 
 Tables:
 - `sci_gadm1`: Social Connectedness Index between GADM level-1 regions
-- `sci_nuts1`: Social Connectedness Index between NUTS level-1 regions (2024)

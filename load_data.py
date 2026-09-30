@@ -22,7 +22,6 @@ LOCAL_DB = DATA_DIR / "meta.duckdb"
 # table name -> CSV file in data/
 TABLES = {
     "sci_gadm1": "gadm1.csv",
-    "sci_nuts1": "nuts1_2024.csv",
 }
 
 SCI_COLUMNS = {
